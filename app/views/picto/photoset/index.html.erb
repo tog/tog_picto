@@ -1,0 +1,10 @@
+<p>Photosets:</p>
+<ul>
+<% if !@photosets.blank? %>
+  <% for photoset in @photosets %>
+    <li><%= link_to photoset.title, picto_photoset_path(photoset) %></li>
+  <% end %>
+<% else %>
+  <li>No photosets</li>
+<% end %>
+</ul>

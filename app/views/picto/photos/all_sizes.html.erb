@@ -1,0 +1,13 @@
+<div class="photo">
+  <p><%= link_to "tiny", all_sizes_picto_photo_path(:size => :tiny) %> |
+    <%= link_to "small", all_sizes_picto_photo_path(:size => :small) %> |
+    <%= link_to "medium", all_sizes_picto_photo_path(:size => :medium) %> |
+    <%= link_to "big", all_sizes_picto_photo_path(:size => :big) %> |
+    <%= link_to "original", all_sizes_picto_photo_path(:size => :original) %>
+    </p>
+  <div class="photo_container">
+    <%= image_tag(url_for_image_column(@photo, "image", @size)) %>
+  </div>
+  <p><%= @photo.description %></p>
+  
+</div>

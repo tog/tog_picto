@@ -1,0 +1,59 @@
+<div class="photo">
+  <h2><%= link_to photoset_image(@photo.photoset), picto_photoset_url(@photo.photoset) unless @photo.photoset.nil? %> <%= @photo.title %></h2>
+  <p><%= link_to "All sizes", all_sizes_picto_photo_path %></p>
+  <div class="photo_container">
+    <%= image_tag(url_for_image_column(@photo, "image", :big)) %>
+  </div>
+  <p><%= @photo.description %></p>
+
+  <%= text_navigation_links(@photo) %>
+
+  <%= text_navigation_links(@photo, {
+      :prev_text => image_tag('/img/ico/greenarrow-6.gif', :alt =>'Anterior'), 
+      :next_text => image_tag('/img/ico/greenarrow-5.gif', :alt =>'Siguiente'),
+      :separator => ""
+    }, {:class => "imgnavigation"}) %>
+
+
+
+  <%= image_navigation_links(@photo) %>
+
+  <% tags = @photo.tag_list %>
+  Tags
+  <ul>
+  <% if !tags.blank? %>
+    <% for tag in tags %>
+      <li><%= link_to 'All users', tags_picto_photos_path(:tag => tag) %> <%= link_to tag, tags_picto_photos_path(:tag => tag, :user => @photo.user_id) %></li>
+    <% end %>
+  <% else %>
+    <li>No tags.</li>
+  <% end %>
+  </ul>
+
+  <div class="photo_comments">
+      <h3><a name="reply"></a>Add your comment</h3>
+      <% form_for :comment, :url => comment_path do |f| -%>
+        <%= f.hidden_field :commentable_type, {:value => @photo.class.name} -%>
+        <%= f.hidden_field :commentable_id, {:value => @photo.id} -%>
+        <%= f.text_area :comment, {:rows=>6, :cols=>50, :class=>"editor wide"} -%>
+        <%= submit_tag 'Post comment', {:accesskey => "s", :class=>"button"} %>
+      <% end %>
+  </div>
+
+  <ul>
+      <% if !@photo.comments.blank? %>
+        <% for comment in @photo.comments %>
+          <li>
+              <div>
+                  <span><%= comment.date %></span>
+                  <br/>
+                  <%= textilize_without_paragraph comment.comment %>
+              </div>
+          </li>
+        <% end %>
+      <% else %>
+        No hay comentarios.
+      <% end %>
+  </ul>
+
+</div>

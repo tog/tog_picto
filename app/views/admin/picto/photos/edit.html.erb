@@ -1,0 +1,31 @@
+<h2>Editing photo
+  <% form_tag admin_picto_photo_path(@photo), :method => :delete do -%>    <br/>
+    <%= submit_tag "Delete this photo", :disable_with => "Please wait...", :type => "image", :src =>"/images/admin/buttons/delete.png" %>
+  <% end -%>
+</h2>
+
+
+<%= error_messages_for :photo %>
+
+<% form_for :photo, :url => admin_picto_photo_url, :html => {:id => "settings", :method => "put"} do |f| -%>
+   <fieldset>
+      <fieldset id="login-details">
+        <legend>Photo info<br/>
+        <%= image_tag(url_for_image_column(@photo, "image", :name =>"small")) %> 
+        </legend>
+        <label>Title <%= f.text_field :title, :size=> nil  %></label>
+        <label>Description <%= f.text_area :description, :rows => 3 %></label>
+        <label>Tags <%= f.text_field :tag_list, :size=> nil  %></label>
+        <br/>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Settings</legend>
+        <label><input checked="checked" type="checkbox" value="1" /><input name="user[admin]" type="hidden" value="0" /> This photoset is public.</label>
+      </fieldset>
+
+      <%= submit_tag 'Save photo' %>
+
+    </fieldset>
+<% end -%>
+

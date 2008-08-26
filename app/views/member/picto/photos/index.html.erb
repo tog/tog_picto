@@ -1,4 +1,4 @@
-<h2>Your photostream <%= link_to "Upload now!",  new_admin_picto_photo_url, {:class => "create button", :title => "Upload new image"} %> <br/> <%= link_to "Your photosets", admin_picto_photosets_url %></h2>
+<h2>Your photostream <%= link_to "Upload now!",  new_member_picto_photo_url, {:class => "create button", :title => "Upload new image"} %> <br/> <%= link_to "Your photosets", member_picto_photosets_url %></h2>
 <table>
   <% for row in @my_photos.in_groups_of 5 %>
     <tr>
@@ -7,7 +7,7 @@
           <td align="center">
             <strong><%= photo.title %></strong><br/>
             <%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
-                        edit_admin_picto_photo_url(photo), 
+                        edit_member_picto_photo_url(photo), 
                         {:title => photo.title} %> <br/>
             <%= photo.description %>
           </td>

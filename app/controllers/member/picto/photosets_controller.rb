@@ -1,4 +1,7 @@
-class Admin::Picto::PhotosetsController < Admin::BaseController
+class Member::Picto::PhotosetsController < Member::BaseController
+  
+  helper "picto/base"
+
   def index
     @owned_photosets = current_user.owned_photosets.paginate(:page => params[:page], :order => "created_at DESC")
     @joined_photosets = current_user.joined_photosets
@@ -13,7 +16,7 @@ class Admin::Picto::PhotosetsController < Admin::BaseController
     @photoset.save!
     
     flash[:notice] = "Photoset created successfully"
-    redirect_to admin_picto_photosets_path
+    redirect_to member_picto_photosets_path
   end
   def edit
     @photoset = current_user.owned_photosets.find(params[:id])
@@ -25,7 +28,7 @@ class Admin::Picto::PhotosetsController < Admin::BaseController
       if @photoset.update_attributes(params[:photoset])
         wants.html do
           flash[:notice]='Photoset updated.'
-          redirect_to admin_picto_photosets_path
+          redirect_to member_picto_photosets_path
         end
       else
         wants.html do
@@ -61,7 +64,7 @@ class Admin::Picto::PhotosetsController < Admin::BaseController
     respond_to do |wants|
       wants.html do
         flash[:notice]='Photoset deleted.'
-        redirect_to admin_picto_photosets_path
+        redirect_to member_picto_photosets_path
       end
     end
     

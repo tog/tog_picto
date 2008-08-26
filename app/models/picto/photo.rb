@@ -13,10 +13,10 @@ class Picto::Photo < ActiveRecord::Base
   file_column :image, :root_path => File.join(RAILS_ROOT, "public/system/photos"), :web_root => 'system/photos/', :magick => {
     :versions => {
       :original => {:name => "original"},
-      :big      => {:size => Tog::Config["extensions.picto.photo.versions.big"],    :name => "big"},
-      :medium   => {:size => Tog::Config["extensions.picto.photo.versions.medium"], :name => "medium"},
-      :small    => {:size => Tog::Config["extensions.picto.photo.versions.small"],  :name => "small"},
-      :tiny     => {:crop => "1:1", :size => Tog::Config["extensions.picto.photo.versions.tiny"],   :name => "tiny"}
+      :big      => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.big"),    :name => "big"},
+      :medium   => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.medium"), :name => "medium"},
+      :small    => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.small"),  :name => "small"},
+      :tiny     => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.tiny"),   :name => "tiny", :crop => "1:1"}
     }
   }
 

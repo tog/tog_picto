@@ -1,4 +1,6 @@
-class Admin::Picto::PhotosController < Admin::BaseController
+class Member::Picto::PhotosController < Member::BaseController
+
+  helper "picto/base"
 
   def index
     @my_photos = current_user.photos.paginate(:page => params[:page], :order => "created_at DESC")
@@ -37,9 +39,9 @@ class Admin::Picto::PhotosController < Admin::BaseController
 
     unless @photoset.nil?
       @photoset.save!
-      redirect_to edit_admin_picto_photoset_path(@photoset)
+      redirect_to edit_member_picto_photoset_path(@photoset)
     else
-      redirect_to admin_picto_photos_path
+      redirect_to member_picto_photos_path
     end
   end
 
@@ -53,7 +55,7 @@ class Admin::Picto::PhotosController < Admin::BaseController
       if @photo.update_attributes(params[:photo])
         wants.html do
           flash[:notice]='Photo updated.'
-          redirect_to admin_picto_photos_path
+          redirect_to member_picto_photos_path
         end
       else
         wants.html do
@@ -70,7 +72,7 @@ class Admin::Picto::PhotosController < Admin::BaseController
     respond_to do |wants|
       wants.html do
         flash[:notice]='Photo deleted.'
-        redirect_to admin_picto_photos_path
+        redirect_to member_picto_photos_path
       end
     end
   end

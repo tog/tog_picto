@@ -8,8 +8,8 @@ namespace(:picto) do |picto|
   picto.resources :photos, :member => {:all_sizes => :get}, :collection => {:tags => :get}
 end
 
-namespace(:admin) do |admin| 
-  admin.namespace(:picto) do |picto| 
+namespace(:member) do |member| 
+  member.namespace(:picto) do |picto| 
     picto.dashboard  "/", :controller => "photos"
     picto.resources :photos
     picto.resources :photosets, :member => {:set_main_photo => :post, :add_photo => :post, :remove_photo => :post}

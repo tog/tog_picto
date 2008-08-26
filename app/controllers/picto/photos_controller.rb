@@ -1,4 +1,7 @@
 class Picto::PhotosController < ApplicationController
+
+  helper "picto/base"
+
   def index
     @your_photos = filter(current_user.photos) if current_user
     @last_photos = filter(Picto::Photo.find(:all, :limit => 20, :order => "created_at DESC"))

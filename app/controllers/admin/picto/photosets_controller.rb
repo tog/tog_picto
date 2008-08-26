@@ -1,4 +1,5 @@
 class Admin::Picto::PhotosetsController < Admin::BaseController
+
   def index
     @owned_photosets = current_user.owned_photosets.paginate(:page => params[:page], :order => "created_at DESC")
     @joined_photosets = current_user.joined_photosets

@@ -1,0 +1,28 @@
+<h2>Your photosets <%= link_to "New photoset",  new_admin_picto_photoset_url, {:class => "create button", :title => "New photoset"} -%> </h2>
+<% unless @owned_photosets.blank? %>
+<table>
+  <% for row in @owned_photosets.in_groups_of 5 %>
+    <tr>
+      <% for photoset in row %>
+        <% if photoset %>
+          <td style="width:100px;">
+            <%= link_to photoset_image(photoset), picto_photoset_url(photoset) %>
+            <p><strong><%= photoset.title %></strong><br/>
+            <%= link_to "Manage photoset", edit_admin_picto_photoset_path(photoset) %></p>
+            <p><%= photoset.description %></p>
+          </td>
+        <% else %>  
+          <td></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <%end%>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <%= will_paginate @owned_photosets %>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+<%end%>

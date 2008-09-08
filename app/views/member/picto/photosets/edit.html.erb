@@ -1,6 +1,6 @@
 <h2>Editing photoset
 
-  <% form_tag admin_picto_photoset_path(@photoset), :method => :delete do -%>    <br/>
+  <% form_tag member_picto_photoset_path(@photoset), :method => :delete do -%>    <br/>
     <%= submit_tag "Delete this photoset", :disable_with => "Please wait...", :type => "image", :src =>"/images/admin/buttons/delete.png" %>
   <% end -%>
   
@@ -8,7 +8,7 @@
 
 <%= error_messages_for :photoset %>
 
-<% form_for :photoset, :url => admin_picto_photoset_path, :html => {:id => "settings", :method => "put"} do |f| -%>
+<% form_for :photoset, :url => member_picto_photoset_path, :html => {:id => "settings", :method => "put"} do |f| -%>
    <fieldset>
       <fieldset id="login-details">
         <legend>Photoset info</legend>
@@ -45,7 +45,7 @@
             <div style="clear:both;"></div>
           </div>
           <%= drop_receiving_element "photoset_main_photo",
-                :onDrop => "function(element){ #{remote_function(:update => 'main_photo', :url =>  set_main_photo_admin_picto_photoset_url,:with => '"photo_id="+ element.id')}}",
+                :onDrop => "function(element){ #{remote_function(:update => 'main_photo', :url =>  set_main_photo_member_picto_photoset_url,:with => '"photo_id="+ element.id')}}",
                 :accept => 'photo_in_set',                                             
                 :hoverclass => 'photos_in_the_set_hover' %>
           </label>                
@@ -60,7 +60,7 @@
             <div style="clear:both;"></div>
           </div>
           <%= drop_receiving_element "photoset_#{@photoset.id}",
-                :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  add_photo_admin_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
+                :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  add_photo_member_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
                 :accept => 'photos',                                             
                 :hoverclass => 'photos_in_the_set_hover' %>
                 <br/>
@@ -71,7 +71,7 @@
             <div style="clear:both;"></div>
           </div>
           <%= drop_receiving_element "photos_bin",
-                :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  remove_photo_admin_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
+                :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  remove_photo_member_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
                 :accept => 'photo_in_set',                                             
                 :hoverclass => 'photos_bin_hover' %>
           </label>      

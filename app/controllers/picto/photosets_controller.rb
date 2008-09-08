@@ -1,5 +1,7 @@
 class Picto::PhotosetsController < ApplicationController
 
+  helper "picto/base"
+  
   #after_filter :filter_photosets
 
   def index

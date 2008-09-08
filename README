@@ -9,7 +9,7 @@ Plugin requirements
 
 - acts_as_rateable
 
-     1.- install:              script/plugin install svn://rubyforge.org/var/svn/rateableplugin/trun
+     1.- install:              script/plugin install svn://rubyforge.org/var/svn/rateableplugin/trunk
      2.- generate migration:   script/generate migration add_ratings 
 
 

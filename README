@@ -1,0 +1,50 @@
+About picto
+-----------
+
+Picto is a plugin for photo management and sharing between users of your social network.
+
+
+Plugin requirements
+-------------------
+
+- acts_as_rateable
+
+     1.- install:              script/plugin install svn://rubyforge.org/var/svn/rateableplugin/trun
+     2.- generate migration:   script/generate migration add_ratings 
+
+
+Installation
+------------
+
+1.- Download source:
+			 
+			(TODO: update with public URL if necessary!)
+			script/plugin install git@github.com:tog/tog_picto.git
+				
+2.- Generate installation migration:
+
+      script/generate migration install_picto
+
+	  with the following content:
+	
+			class InstallPicto < ActiveRecord::Migration
+			  def self.up
+			    migrate_plugin "tog_picto", 6
+			  end
+
+			  def self.down
+			    migrate_plugin "tog_picto", 0
+			  end
+			end
+			
+3.- Add picto's routes to your application's config/routes.rb
+			
+			map.routes_from_plugin 'tog_picto'
+
+			
+Post installation
+-----------------
+
+1.- Run your new migrations:
+
+			rake db:migrate

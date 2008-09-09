@@ -54,7 +54,7 @@ class Member::Picto::PhotosController < Member::BaseController
     respond_to do |wants|
       if @photo.update_attributes(params[:photo])
         wants.html do
-          flash[:notice]='Photo updated.'
+          flash[:ok]='Photo updated.'
           redirect_to member_picto_photos_path
         end
       else
@@ -71,7 +71,7 @@ class Member::Picto::PhotosController < Member::BaseController
     @photo.destroy
     respond_to do |wants|
       wants.html do
-        flash[:notice]='Photo deleted.'
+        flash[:ok]='Photo deleted.'
         redirect_to member_picto_photos_path
       end
     end

@@ -15,7 +15,7 @@ class Member::Picto::PhotosetsController < Member::BaseController
     @photoset = current_user.owned_photosets.build(params[:photoset])
     @photoset.save!
     
-    flash[:notice] = "Photoset created successfully"
+    flash[:ok] = "Photoset created successfully"
     redirect_to member_picto_photosets_path
   end
   def edit
@@ -27,12 +27,12 @@ class Member::Picto::PhotosetsController < Member::BaseController
     respond_to do |wants|
       if @photoset.update_attributes(params[:photoset])
         wants.html do
-          flash[:notice]='Photoset updated.'
+          flash[:ok]='Photoset updated.'
           redirect_to member_picto_photosets_path
         end
       else
         wants.html do
-          flash.now[:error]='Failed to update photoset.'
+          flash[:error]='Failed to update photoset.'
           render :action => :edit
         end
       end
@@ -63,7 +63,7 @@ class Member::Picto::PhotosetsController < Member::BaseController
     @photoset.destroy
     respond_to do |wants|
       wants.html do
-        flash[:notice]='Photoset deleted.'
+        flash[:ok]='Photoset deleted.'
         redirect_to member_picto_photosets_path
       end
     end

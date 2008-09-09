@@ -1,28 +1,42 @@
-<h2>Your photosets <%= link_to "New photoset",  new_member_picto_photoset_url, {:class => "create button", :title => "New photoset"} -%> </h2>
-<% unless @owned_photosets.blank? %>
-<table>
-  <% for row in @owned_photosets.in_groups_of 5 %>
-    <tr>
-      <% for photoset in row %>
-        <% if photoset %>
-          <td style="width:100px;">
-            <%= link_to photoset_image(photoset), picto_photoset_url(photoset) %>
-            <p><strong><%= photoset.title %></strong><br/>
-            <%= link_to "Manage photoset", edit_member_picto_photoset_path(photoset) %></p>
-            <p><%= photoset.description %></p>
-          </td>
-        <% else %>  
-          <td></td>
-        <% end %>
-      <% end %>
-    </tr>
-  <%end%>
-  <tfoot>
-    <tr>
-      <td colspan="5">
-        <%= will_paginate @owned_photosets %>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+<% content_for :sidebar do %>
+<div class="portlet portletD" id="portlet_userWall">
+    <h2><span>Your stuff</span></h2>
+    <div class="portlet_content">
+      <%= link_to "Upload more photos now!",  new_member_picto_photo_url, {:class => "add", :title => "Upload new images"} %>
+    </div>    
+</div>
+
+<% end %>
+
+<p><%= link_to "Create a new photoset",  new_member_picto_photoset_url, {:class => "add button", :title => "Create a new photoset"} -%></p>
+
+<div class="portlet portletB">
+    <h2><span>Your photosets</span></h2>
+    <div class="portlet_content">	
+        <ul>
+					<% if @owned_photosets.empty? %>
+					  <li>There isn't any photosets yet.</li>
+					<% else %>
+					    <% @owned_photosets.each do |photoset| %>
+                <li class="clearfix">
+                    <div class="image left"><%= link_to photoset_image(photoset), picto_photoset_path(photoset) %></div>
+                    <p><strong><%= link_to photoset.title, picto_photoset_path(photoset) %><br/>
+                    <%= link_to "Manage photoset", edit_member_picto_photoset_path(photoset) %><br/>
+                    <p><%= photoset.description %></p>
+                </li>                            
+					    <% end %>
+					<% end %>	
+        </ul>
+    </div>    
+</div>
+<% if !@owned_photosets.empty? %>
+	<div class="info_results">
+	    <span class="info_items">
+	    	Photosets <%=@owned_photosets.size > 0 ? (@owned_photosets.offset + 1) : '0'%> to 
+		          <%=@owned_photosets.size + @owned_photosets.offset%> of <%=@owned_photosets.total_entries%>
+	    </span>
+	    <span class="pages_navigation right">
+		      <%= will_paginate @owned_photosets %>
+	    </span>
+	</div>
 <%end%>

@@ -1,103 +1,114 @@
-<h2>Editing photoset
+<% content_for :sidebar do %>
+<div class="portlet portletD" id="portlet_userWall">
+    <h2><span>Your stuff</span></h2>
+    <div class="portlet_content">
+      <% form_tag member_picto_photoset_path(@photoset), :method => :delete do -%>    <br/>
+        <%= submit_tag "Delete this photoset", :disable_with => "Please wait...", :type => "image", :src =>"/tog_core/images/ico/delete.gif" %> Delete this photoset
+      <% end -%>
+    </div>    
+</div>
+<% end %>
 
-  <% form_tag member_picto_photoset_path(@photoset), :method => :delete do -%>    <br/>
-    <%= submit_tag "Delete this photoset", :disable_with => "Please wait...", :type => "image", :src =>"/images/admin/buttons/delete.png" %>
-  <% end -%>
-  
-</h2>
+
+<div class="titleB">Editing photoset</div>
+
+<br />
 
 <%= error_messages_for :photoset %>
 
 <% form_for :photoset, :url => member_picto_photoset_path, :html => {:id => "settings", :method => "put"} do |f| -%>
-   <fieldset>
-      <fieldset id="login-details">
-        <legend>Photoset info</legend>
-        <label>Title <%= f.text_field :title, :size=> nil  %></label>
-        <label>Description <%= f.text_area :description, :rows => 3 %></label>
 
-      </fieldset>
+  <fieldset>
+    <div class="fields">
+       <p><label>Title</label> <%= f.text_field :title, {:class => "fieldbox", :size => "40"} %></p>
 
-      <fieldset>
-        <legend>Settings</legend>
-        <label>Tags <%= f.text_field :tag_list, :size=> nil  %></label>
-        <label><input checked="checked" type="checkbox" value="1" /><input name="user[admin]" type="hidden" value="0" /> This photoset is public.</label>
-      </fieldset>
+       <p><label>Description</label> <%= f.text_area :description, :size => '40x4' %></p>
 
-      <style type="text/css">
-        div#droppable_container {  }
-        div#available_photos { padding: 10px; border:5px solid #ccc;}
-        img.photos { width:60px; height:60px; cursor:move; background:#9fcfba; border:1px solid #666;  }
-        div.main_photo_in_the_set { }
-        div.photos_in_the_set { padding: 10px; background:#ffffff; border:5px solid #ccc; }
-        div.photos_in_the_set_hover { border:5px dashed #aaa; background:#efefef; }
-        div.photos_bin { padding: 10px; background:#ffffff; border:5px solid red; min-height:50px;}
-        div.photos_bin_hover {border:5px dashed red; background:#efefef;}
-      </style>
-      
-      <fieldset id="social-details">
-        <legend>Photos</legend>
-        <div class="group">
-          <label>Main photo
-          <div id="photoset_main_photo" class="main_photo_in_the_set">
-            <div id="main_photo">
-              <%= render :partial => 'main_photo_in_the_set', :locals => {:photoset => @photoset } %>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-          <%= drop_receiving_element "photoset_main_photo",
-                :onDrop => "function(element){ #{remote_function(:update => 'main_photo', :url =>  set_main_photo_member_picto_photoset_url,:with => '"photo_id="+ element.id')}}",
-                :accept => 'photo_in_set',                                             
-                :hoverclass => 'photos_in_the_set_hover' %>
-          </label>                
+       <p><label>Tags (separated by ,)</label> <%= f.text_field :tag_list, {:class => "fieldbox", :size => "40"} %></p>
+
+       <p><label>Privacy</label><input checked="checked" type="checkbox" value="<%=@photoset.privacy%>" /><input name="user[admin]" type="hidden" value="0" /> This photoset is public</p>
+    </div>
+  </fieldset>
+  
+  
+
+  <style type="text/css">
+    div#droppable_container {  }
+    div#available_photos { padding: 10px; border:5px solid #ccc;}
+    img.photos { width:60px; height:60px; cursor:move; background:#9fcfba; border:1px solid #666;  }
+    div.main_photo_in_the_set { border:5px solid #ccc; }
+    div.photos_in_the_set { padding: 10px; background:#ffffff; border:5px solid #ccc; }
+    div.photos_in_the_set_hover { border:5px dashed #aaa; background:#efefef; }
+    div.photos_bin { padding: 10px; background:#ffffff; border:5px solid red; min-height:50px;}
+    div.photos_bin_hover {border:5px dashed red; background:#efefef;}
+  </style>
+  
+  <fieldset id="social-details">
+    <legend>Photos</legend>
+    <div class="group">
+      <label>Main photo
+      <div id="photoset_main_photo" class="main_photo_in_the_set">
+        <div id="main_photo">
+          <%= render :partial => 'main_photo_in_the_set', :locals => {:photoset => @photoset } %>
         </div>
-        <div class="group">
-          <% photos_in_the_set = @photoset.photos %>
-          <label>Currently in the set
-          <div id="photoset_<%= @photoset.id %>" class="photos_in_the_set">
-            <div id="items">
-              <%= render :partial => 'photoset_photos', :locals => {:photos_in_the_set => photos_in_the_set} %>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-          <%= drop_receiving_element "photoset_#{@photoset.id}",
-                :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  add_photo_member_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
-                :accept => 'photos',                                             
-                :hoverclass => 'photos_in_the_set_hover' %>
-                <br/>
-          <div id="photos_bin" class="photos_bin">
-            <div id="items">
-              <h4>Drag here to extract a photo of a photoset</h4>
-            </div>
-            <div style="clear:both;"></div>
-          </div>
-          <%= drop_receiving_element "photos_bin",
-                :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  remove_photo_member_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
-                :accept => 'photo_in_set',                                             
-                :hoverclass => 'photos_bin_hover' %>
-          </label>      
-          <% available_photos = current_user.photos - photos_in_the_set %>
-          <label>Available Photos in your photostream
-             <div id="available_photos">
-               <ul>
-               <% unless available_photos.blank? %>
-                 <% for photo in available_photos %>
-                   <%= image_tag url_for_image_column(photo, "image", :name =>"tiny"),
-                                :id => "photo_#{photo.id}",
-                                :alt => photo.title,
-                                :style=>  "cursor:move",
-                                :class => "photos"  %>
-                   <%= draggable_element "photo_#{photo.id}", :revert => true %>
-                 <% end %>
-               <% else %>
-                 No more photos.
-               <% end %>
-               </ul>
-             </div>
-          </label>
+        <div style="clear:both;"></div>
+      </div>
+      <%= drop_receiving_element "photoset_main_photo",
+            :onDrop => "function(element){ #{remote_function(:update => 'main_photo', :url =>  set_main_photo_member_picto_photoset_url,:with => '"photo_id="+ element.id')}}",
+            :accept => 'photo_in_set',                                             
+            :hoverclass => 'photos_in_the_set_hover' %>
+      </label>                
+    </div>
+    <div class="group">
+      <% photos_in_the_set = @photoset.photos %>
+      <label>Currently in the set
+      <div id="photoset_<%= @photoset.id %>" class="photos_in_the_set">
+        <div id="items">
+          <%= render :partial => 'photoset_photos', :locals => {:photos_in_the_set => photos_in_the_set} %>
         </div>
-      </fieldset>
-      <%= submit_tag 'Save photoset' %>
-
-    </fieldset>
+        <div style="clear:both;"></div>
+      </div>
+      <%= drop_receiving_element "photoset_#{@photoset.id}",
+            :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  add_photo_member_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
+            :accept => 'photos',                                             
+            :hoverclass => 'photos_in_the_set_hover' %>
+            <br/>
+      <div id="photos_bin" class="photos_bin">
+        <div id="items">
+          <h4>Drag here to extract a photo of a photoset</h4>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+      <%= drop_receiving_element "photos_bin",
+            :onDrop => "function(element){ #{remote_function(:update => 'items', :url =>  remove_photo_member_picto_photoset_url ,:with => '"photo_id="+ element.id')}}",
+            :accept => 'photo_in_set',                                             
+            :hoverclass => 'photos_bin_hover' %>
+      </label>      
+      <% available_photos = current_user.photos - photos_in_the_set %>
+      <label>Available Photos in your photostream
+         <div id="available_photos">
+           <ul>
+           <% unless available_photos.blank? %>
+             <% for photo in available_photos %>
+               <%= image_tag url_for_image_column(photo, "image", :name =>"tiny"),
+                            :id => "photo_#{photo.id}",
+                            :alt => photo.title,
+                            :style=>  "cursor:move",
+                            :class => "photos"  %>
+               <%= draggable_element "photo_#{photo.id}", :revert => true %>
+             <% end %>
+           <% else %>
+             No more photos.
+           <% end %>
+           </ul>
+         </div>
+      </label>
+    </div>
+  </fieldset>  
+  
+  
+  <br />
+  <div class="actions">
+    <%= submit_tag 'Save photoset', :class => "button mainaction" %>
+  </div>
 <% end -%>
-

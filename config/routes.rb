@@ -3,9 +3,13 @@
 
 # resources :pictos
 
+with_options(:controller => 'picto/photos', :conditions => { :method => :get }) do |photo|
+   photo.picto_scaled_photo   '/picto/photos/:id/:size', :action => 'show'
+end
+
 namespace(:picto) do |picto| 
   picto.resources :photosets
-  picto.resources :photos, :member => {:all_sizes => :get}, :collection => {:tags => :get}
+  picto.resources :photos, :collection => {:tags => :get}
 end
 
 namespace(:member) do |member| 

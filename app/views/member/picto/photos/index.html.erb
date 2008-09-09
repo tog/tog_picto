@@ -1,27 +1,39 @@
-<h2>Your photostream <%= link_to "Upload now!",  new_member_picto_photo_url, {:class => "create button", :title => "Upload new image"} %> <br/> <%= link_to "Your photosets", member_picto_photosets_url %></h2>
-<table>
-  <% for row in @my_photos.in_groups_of 5 %>
-    <tr>
-      <% for photo in row %>
-        <% if photo %>
-          <td align="center">
-            <strong><%= photo.title %></strong><br/>
-            <%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
-                        edit_member_picto_photo_url(photo), 
-                        {:title => photo.title} %> <br/>
-            <%= photo.description %>
-          </td>
-        <% else %>  
-          <td></td>
-        <% end %>
-      <% end %>
-    </tr>
-  <%end%>
-  <tfoot>
-    <tr>
-      <td colspan="5">
-        <%= will_paginate @my_photos %>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+<% content_for :sidebar do %>
+<div class="portlet portletD" id="portlet_userWall">
+    <h2><span>Your stuff</span></h2>
+    <div class="portlet_content">
+      <%= link_to "Your photosets", member_picto_photosets_url %>
+    </div>    
+</div>
+
+<% end %>
+
+<p><%= link_to "Upload more photos now!",  new_member_picto_photo_url, {:class => "button add", :title => "Upload new images"} %></p>
+
+<div class="portlet portletG">
+    <h2><span>Your photostream</span></h2>
+    <div class="portlet_content">	
+        <ul class="clearfix">
+					<% if @my_photos.empty? %>
+					  <li>There isn't any photos yet.</li>
+					<% else %>
+					    <% @my_photos.each do |photo| %>
+					      <li><%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
+                            edit_member_picto_photo_url(photo), 
+                            {:title => photo.title} %></li>
+					    <% end %>
+					<% end %>	
+        </ul>
+    </div>    
+</div>
+<% if !@my_photos.empty? %>
+	<div class="info_results">
+	    <span class="info_items">
+	    	Photos <%=@my_photos.size > 0 ? (@my_photos.offset + 1) : '0'%> to 
+		          <%=@my_photos.size + @my_photos.offset%> of <%=@my_photos.total_entries%>
+	    </span>
+	    <span class="pages_navigation right">
+		      <%= will_paginate @my_photos %>
+	    </span>
+	</div>
+<%end%>

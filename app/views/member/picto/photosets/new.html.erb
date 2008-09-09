@@ -1,22 +1,32 @@
+<% content_for :sidebar do %>
+  <%= link_to "Upload more photos now!",  new_member_picto_photo_url, {:class => "add", :title => "Upload new images"} %>
+  <br/>
+  <%= link_to "Your photosets", member_picto_photosets_url %>
+<% end %>
+
+
+<div class="titleB">New photoset</div>
+
+<br />
+
 <%= error_messages_for :photoset %>
 
 <% form_for :photoset, :url => member_picto_photosets_path, :html => {:id => "settings", :method => "post"} do |f| -%>
-  <h2>New photoset</h2>
+
   <fieldset>
+    <div class="fields">
+       <p><label>Title</label> <%= f.text_field :title, {:class => "fieldbox", :size => "40"} %></p>
 
-       <fieldset id="login-details">
-         <legend>Photoset info</legend>
-         <label>Title <%= f.text_field :title, :size=> nil  %></label>
-         <label>Description <%= f.text_area :description, :rows => 3 %></label>
+       <p><label>Description</label> <%= f.text_area :description, :size => '40x4' %></p>
 
-       </fieldset>
+       <p><label>Tags (separated by ,)</label> <%= f.text_field :tag_list, {:class => "fieldbox", :size => "40"} %></p>
 
-       <fieldset>
-         <legend>Settings</legend>
-         <label>Tags <%= f.text_field :tag_list, :size=> nil  %></label>
-         <label><input checked="checked" type="checkbox" value="1" /><input name="user[admin]" type="hidden" value="0" /> This photoset is public.</label>
-       </fieldset>
-  
-    <%= submit_tag 'New photoset' %>
+       <p><label>Privacy</label><input checked="checked" type="checkbox" value="1" /><input name="user[admin]" type="hidden" value="0" /> This photoset is public</p>
+
+    </div>
   </fieldset>
+  <br />
+  <div class="actions">
+    <%= submit_tag 'Create photoset', :class => "button mainaction" %>
+  </div>
 <% end -%>

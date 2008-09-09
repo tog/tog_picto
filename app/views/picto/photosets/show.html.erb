@@ -1,17 +1,38 @@
-<div id="photoset">
-  <div id="info"style="width:25%;margin:20px;float:left">
-    <strong>Photoset <%= @photoset.title %></strong>
-    <p><%= @photoset.description %></p>
-  </div>
-  <div style="width:75%">
-  <% unless @photoset.photos.blank? %>
-    <% for photo in @photoset.photos %>
-      <%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
-                picto_photo_url(photo), 
-                {:title => photo.title} %>
-    <% end %>
-  <% else %>
-    No photos in this photoset yet. 
-  <% end %>
-  </div>
+<% content_for :sidebar do %>
+
+<% end %>
+<div class="detail detail1">
+    <div class="image"><%= photoset_image(@photoset) %></div>
+    <div class="title"><%= @photoset.title %></div>
+    <div class="text">
+        <p><%= @photoset.description %></p>
+    </div> 
+</div> <!-- /.detail1 -->
+<br/><br/>
+<div class="portlet portletG">
+    <h2><span>Photos</span></h2>
+    <div class="portlet_content">	
+        <ul class="clearfix">
+					<% if @photos.empty? %>
+					  <li>There isn't any photos on this photoset yet.</li>
+					<% else %>
+					    <% @photos.each do |photo| %>
+					      <li><%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
+                            picto_photo_url(photo), 
+                            {:title => photo.title} %><br/><%=photo.title%></li>
+					    <% end %>
+					<% end %>	
+        </ul>
+    </div>    
 </div>
+<% if !@photos.empty? %>
+	<div class="info_results">
+	    <span class="info_items">
+	    	Photos <%=@photos.size > 0 ? (@photos.offset + 1) : '0'%> to 
+		          <%=@photos.size + @photos.offset%> of <%=@photos.total_entries%>
+	    </span>
+	    <span class="pages_navigation right">
+		      <%= will_paginate @photos %>
+	    </span>
+	</div>
+<%end%>

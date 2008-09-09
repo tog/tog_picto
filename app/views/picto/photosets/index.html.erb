@@ -1,10 +1,35 @@
-<p>Photosets:</p>
-<ul>
-<% if !@photosets.blank? %>
-  <% for photoset in @photosets %>
-    <li><%= link_to photoset.title, picto_photoset_path(photoset) %></li>
-  <% end %>
-<% else %>
-  <li>No photosets</li>
+<% content_for :sidebar do %>
+
 <% end %>
-</ul>
+
+<p><%= link_to "Create a new photoset",  new_member_picto_photoset_url, {:class => "add button", :title => "Create a new photoset"} -%></p>
+
+<div class="portlet portletB">
+    <h2><span>Photosets</span></h2>
+    <div class="portlet_content">	
+        <ul>
+					<% if @photosets.empty? %>
+					  <li>There isn't any photoset yet.</li>
+					<% else %>
+					    <% @photosets.each do |photoset| %>
+                <li class="clearfix">
+                    <div class="image left"><%= link_to photoset_image(photoset), picto_photoset_path(photoset) %></div>
+                    <p><strong><%= link_to photoset.title, picto_photoset_path(photoset) %><br/>
+                    <p><%= photoset.description %></p>
+                </li>                            
+					    <% end %>
+					<% end %>	
+        </ul>
+    </div>    
+</div>
+<% if !@photosets.empty? %>
+	<div class="info_results">
+	    <span class="info_items">
+	    	Photosets <%=@photosets.size > 0 ? (@photosets.offset + 1) : '0'%> to 
+		          <%=@photosets.size + @photosets.offset%> of <%=@photosets.total_entries%>
+	    </span>
+	    <span class="pages_navigation right">
+		      <%= will_paginate @photosets %>
+	    </span>
+	</div>
+<%end%>

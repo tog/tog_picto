@@ -1,34 +1,52 @@
+<% content_for :sidebar do %>
+
+<% end %>
+
+<div class="titleB"><%= @photo.title %></div>
+
+
 <div class="photo">
-  <h2><%= link_to photoset_image(@photo.photoset), picto_photoset_url(@photo.photoset) unless @photo.photoset.nil? %> <%= @photo.title %></h2>
-  <p><%= link_to "All sizes", all_sizes_picto_photo_path %></p>
+
+  <p><%= link_to "tiny", picto_scaled_photo_path(@photo, :tiny) %> |
+    <%= link_to "small", picto_scaled_photo_path(@photo, :small) %> |
+    <%= link_to "medium", picto_scaled_photo_path(@photo, :medium) %> |
+    <%= link_to "big", picto_scaled_photo_path(@photo, :big) %> |
+    <%= link_to "original", picto_scaled_photo_path(@photo, :original) %>
+    </p>
   <div class="photo_container">
-    <%= image_tag(url_for_image_column(@photo, "image", :big)) %>
+    <%= image_tag(url_for_image_column(@photo, "image", @size)) %>
   </div>
   <p><%= @photo.description %></p>
-
-  <%= text_navigation_links(@photo) %>
-
-  <%= text_navigation_links(@photo, {
-      :prev_text => image_tag('/img/ico/greenarrow-6.gif', :alt =>'Anterior'), 
-      :next_text => image_tag('/img/ico/greenarrow-5.gif', :alt =>'Siguiente'),
-      :separator => ""
-    }, {:class => "imgnavigation"}) %>
-
-
-
-  <%= image_navigation_links(@photo) %>
-
+  <p>
   <% tags = @photo.tag_list %>
-  Tags
-  <ul>
+  Tags: 
   <% if !tags.blank? %>
     <% for tag in tags %>
-      <li><%= link_to 'All users', tags_picto_photos_path(:tag => tag) %> <%= link_to tag, tags_picto_photos_path(:tag => tag, :user => @photo.user_id) %></li>
+      <%= link_to tag, tags_picto_photos_path(:tag => tag, :user => @photo.user_id) %>
     <% end %>
   <% else %>
-    <li>No tags.</li>
+    No tags.
   <% end %>
-  </ul>
+  </p>
+  
+	<div class="info_results">
+
+    <%= text_navigation_links(@photo) %>
+<!--
+    <%= text_navigation_links(@photo, {
+        :prev_text => image_tag('/img/ico/greenarrow-6.gif', :alt =>'Anterior'), 
+        :next_text => image_tag('/img/ico/greenarrow-5.gif', :alt =>'Siguiente'),
+        :separator => ""
+      }, {:class => "imgnavigation"}) %>
+
+-->
+	  
+    <%= image_navigation_links(@photo) %>
+	</div>  
+
+
+
+
 
   <div class="photo_comments">
       <h3><a name="reply"></a>Add your comment</h3>
@@ -36,6 +54,7 @@
         <%= f.hidden_field :commentable_type, {:value => @photo.class.name} -%>
         <%= f.hidden_field :commentable_id, {:value => @photo.id} -%>
         <%= f.text_area :comment, {:rows=>6, :cols=>50, :class=>"editor wide"} -%>
+        <br/>
         <%= submit_tag 'Post comment', {:accesskey => "s", :class=>"button"} %>
       <% end %>
   </div>
@@ -52,7 +71,7 @@
           </li>
         <% end %>
       <% else %>
-        No hay comentarios.
+        No comments on this photo by now.
       <% end %>
   </ul>
 

@@ -8,12 +8,7 @@ class Picto::PhotosController < ApplicationController
   end
 
   def show
-    @photo = Picto::Photo.find(params[:id])
-    auth_photo(@photo)
-  end
-  
-  def all_sizes
-    @size = (params[:size]|| :big).to_sym 
+    @size = (params[:size] || :big).to_sym     
     @photo = Picto::Photo.find(params[:id])
     auth_photo(@photo)
   end

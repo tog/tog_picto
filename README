@@ -7,10 +7,51 @@ Picto is a plugin for photo management and sharing between users of your social 
 Plugin requirements
 -------------------
 
-- acts_as_rateable
+In case you haven't installed any of them previously:
 
-     1.- install:              script/plugin install svn://rubyforge.org/var/svn/rateableplugin/trunk
-     2.- generate migration:   script/generate migration add_ratings 
+- acts_as_commentable: 
+
+		-This is a requirement for tog, so you should have already installed it!.
+
+- acts_as_taggable_on_steroids: http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids/README
+
+		For those of you impatient:
+		
+			1.- install plugin:        
+						script/plugin install http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids
+						
+			2.- generate migration:    
+						script/generate acts_as_taggable_migration
+
+- rateableplugin: http://rateableplugin.rubyforge.org/
+
+		For the impatients:
+
+       1.- install plugin:              
+						script/plugin install svn://rubyforge.org/var/svn/rateableplugin/trunk
+						
+       2.- generate migration:   
+						script/generate migration add_ratings 
+
+					class AddRatings < ActiveRecord::Migration
+						def self.up
+			        create_table :ratings do |t|
+			                t.column :rating, :integer    # You can add a default value here if you wish
+			                t.column :rateable_id :integer, :null => false
+			                t.column :rateable_type, :string, :null => false
+			        end
+			        add_index :ratings, [:rateable_id, :rating]    # Not required, but should help more than it hurts
+						end
+
+						def self.down
+					    drop_table :ratings
+						end
+				  end
+				
+- acts_as_list: http://github.com/rails/acts_as_list/tree/master/README
+
+			1.- install plugin:
+					 script/plugin install git://github.com/rails/acts_as_list.git 
 
 
 Installation

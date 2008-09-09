@@ -2,7 +2,8 @@ require_plugin 'tog_core'
 require_plugin 'tog_social'
 require_plugin 'acts_as_commentable'
 require_plugin 'acts_as_taggable_on_steroids'
-require_plugin 'acts_as_rateable'
+require_plugin 'rateableplugin'
+require_plugin 'acts_as_list'
 
 
 Tog::Plugins.settings :tog_picto, "photo.versions.big"    => ">700x700",
@@ -11,6 +12,8 @@ Tog::Plugins.settings :tog_picto, "photo.versions.big"    => ">700x700",
                                   "photo.versions.tiny"   => "75x75"
 
 Tog::Interface.sections(:member).add "Photos", "/member/picto/photos"          
+Tog::Interface.sections(:site).add "Photos", "/picto/photosets"          
+
 
 #Tog::Search.sources << Photo
 #Tog::Search.sources << PhotoSet                        

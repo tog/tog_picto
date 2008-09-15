@@ -10,76 +10,17 @@ Resources
 Plugin requirements
 -------------------
 
+
 In case you haven't installed any of them previously you'll need the following plugins:
 
-h3. acts_as_commentable
+* "acts_as_commentable":https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_commentable
+* "rateableplugin":https://github.com/tog/tog/wikis/3rd-party-plugins-seo_urls
+* "acts_as_taggable_on_steroids":https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids
+* "acts_as_list":https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_list
 
-This is a requirement for tog, so you should have already installed it!.
+Follow each link above for a short installation guide incase you have to install them.			
 
-
-h3. acts_as_taggable_on_steroids
-
-For those of you impatient:
-		
-# install plugin:   
-     
-<pre>
-ruby script/plugin install http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids
-</pre>		
-				
-# generate migration:   
- 
-<pre>				
-ruby script/generate acts_as_taggable_migration
-</pre>			
-
-more: "http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids/README":http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids/README
 	
-	
-h3. rateableplugin
-
-For the impatients:
-
-# install plugin:   
-     
-<pre>
-ruby script/plugin install svn://rubyforge.org/var/svn/rateableplugin/trunk
-</pre>		
-				
-# generate migration:   
- 
-<pre>				
-ruby script/generate add_ratings
-</pre>			
-
-<pre>
-class AddRatings < ActiveRecord::Migration
-	def self.up
-    create_table :ratings do |t|
-            t.column :rating, :integer    # You can add a default value here if you wish
-            t.column :rateable_id :integer, :null => false
-            t.column :rateable_type, :string, :null => false
-    end
-    add_index :ratings, [:rateable_id, :rating]    # Not required, but should help more than it hurts
-	end
-
-	def self.down
-    drop_table :ratings
-	end
-end
-</pre>
-
-more: "http://rateableplugin.rubyforge.org/":http://rateableplugin.rubyforge.org/
-
-				
-h3. acts_as_list
-
-<pre>
-ruby script/plugin install git://github.com/rails/acts_as_list.git
-</pre>	
-
-more: "http://github.com/rails/acts_as_list/tree/master/README":http://github.com/rails/acts_as_list/tree/master/README
-			
 
 Install
 -------

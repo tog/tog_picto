@@ -2,7 +2,7 @@ require_plugin 'tog_core'
 require_plugin 'tog_social'
 require_plugin 'acts_as_commentable'
 require_plugin 'acts_as_taggable_on_steroids'
-require_plugin 'rateableplugin'
+require_plugin 'acts_as_rateable'
 require_plugin 'acts_as_list'
 
 

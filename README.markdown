@@ -3,6 +3,12 @@ Picto
 
 Picto is a plugin for photo management and sharing between users of your social network.
 
+== Included functionality
+
+# Photos grouped in photosets
+# Photoset-defined privacy
+# Multiple sized for each photos
+# Comentable, rateable and taggable photos and photosets
 
 Resources
 =========

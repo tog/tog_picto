@@ -3,7 +3,8 @@ Picto
 
 Picto is a plugin for photo management and sharing between users of your social network.
 
-== Included functionality
+Included functionality
+----------------------
 
 * Photos grouped in photosets
 * Photoset-defined privacy
@@ -19,10 +20,10 @@ Plugin requirements
 
 In case you haven't installed any of them previously you'll need the following plugins:
 
-* "acts_as_commentable":https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_commentable
-* "rateableplugin":https://github.com/tog/tog/wikis/3rd-party-plugins-seo_urls
-* "acts_as_taggable_on_steroids":https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids
-* "acts_as_list":https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_list
+* [acts\_as\_commentable](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_commentable)
+* [seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo_urls)
+* [acts\_as\_taggable\_on\_steroids](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
+* [acts\_as\_list](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_list)
 
 Follow each link above for a short installation guide incase you have to install them.			
 
@@ -72,9 +73,9 @@ rake db:migrate
 More
 -------
 
-"https://github.com/tog/tog_picto":https://github.com/tog/tog_picto
+[http://github.com/tog/tog_picto](http://github.com/tog/tog_picto)
 
-"https://github.com/tog/tog_picto/wikis":https://github.com/tog/tog_picto/wikis
+[http://github.com/tog/tog_picto/wikis](http://github.com/tog/tog_picto/wikis)
 
 
 Copyright (c) 2008 Keras Software Development, released under the MIT license

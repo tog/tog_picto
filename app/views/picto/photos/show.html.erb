@@ -1,14 +1,9 @@
 <% content_for :sidebar do %>
-
 <% end %>
 
 <div class="titleB"><%= @photo.title %></div>
 
-
 <div class="photo">
-
-
-
   <p><%= link_to 'tiny', picto_scaled_photo_path(@photo, :tiny)%> |
     <%= link_to "small", picto_scaled_photo_path(@photo, :small) %> |
     <%= link_to "medium", picto_scaled_photo_path(@photo, :medium) %> |
@@ -20,61 +15,72 @@
   </div>
   <p><%= @photo.description %></p>
   <p>
-  <% tags = @photo.tag_list %>
-  Tags: 
-  <% if !tags.blank? %>
-    <% for tag in tags %>
-      <%= link_to tag, tags_picto_photos_path(:tag => tag, :user => @photo.user_id) %>
+    <% tags = @photo.tag_list %>
+    Tags:
+    <% if !tags.blank? %>
+      <% for tag in tags %>
+        <%= link_to tag, tags_picto_photos_path(:tag => tag, :user => @photo.user_id) %>
+      <% end %>
+    <% else %>
+      No tags.
     <% end %>
-  <% else %>
-    No tags.
-  <% end %>
   </p>
-  
-	<div class="info_results">
 
+  <div class="info_results">
     <%= text_navigation_links(@photo) %>
 <!--
     <%= text_navigation_links(@photo, {
-        :prev_text => image_tag('/img/ico/greenarrow-6.gif', :alt =>'Anterior'), 
+        :prev_text => image_tag('/img/ico/greenarrow-6.gif', :alt =>'Anterior'),
         :next_text => image_tag('/img/ico/greenarrow-5.gif', :alt =>'Siguiente'),
         :separator => ""
       }, {:class => "imgnavigation"}) %>
-
 -->
-	  
     <%= image_navigation_links(@photo) %>
-	</div>  
-
-
-
-
-
-  <div class="photo_comments">
-      <h3><a name="reply"></a>Add your comment</h3>
-      <% form_for :comment, :url => comment_path do |f| -%>
-        <%= f.hidden_field :commentable_type, {:value => @photo.class.name} -%>
-        <%= f.hidden_field :commentable_id, {:value => @photo.id} -%>
-        <%= f.text_area :comment, {:rows=>6, :cols=>50, :class=>"editor wide"} -%>
-        <br/>
-        <%= submit_tag 'Post comment', {:accesskey => "s", :class=>"button"} %>
-      <% end %>
   </div>
 
-  <ul>
-      <% if !@photo.comments.blank? %>
-        <% for comment in @photo.comments %>
-          <li>
-              <div>
-                  <span><%= comment.date %></span>
-                  <br/>
-                  <%= textilize_without_paragraph comment.comment %>
-              </div>
-          </li>
+  <div class="portlet portletI">
+    <h2><span>Comments</span></h2>
+    <div class="portlet_content">
+      <ul>
+        <% if !@photo.comments.blank? %>
+          <% for comment in @photo.comments %>
+            <li class="clearfix<%= cycle(nil, " pair") %>" id="comment_<%= comment.id %>">
+                <% if comment.user %>
+                  <div class="image"><%= link_to icon_for_profile(comment.user.profile, 'small'), profile_path(comment.user.profile) %></div>
+                  <div class="text"><strong><%= link_to comment.user.profile.full_name, profile_path(comment.user.profile) %> says:</strong></div>
+                <% else %>
+                  <div class="text"><strong><%= comment_user_name(comment) %> says:</strong></div>
+                <% end %>
+                <%= textilize comment.comment %>
+                <span class="helpinfo"><%= comment.created_at %> <%= link_to "[permalink]", "#comment_#{comment.id}" %></span>
+            </li>
+          <% end %>
+        <% else %>
+          No comments on this photo by now.
         <% end %>
-      <% else %>
-        No comments on this photo by now.
-      <% end %>
-  </ul>
+      </ul>
+    </div>
+  </div> <!-- /#potlet_featuredPosts -->
+
+  <h3><a name="reply"></a>Add your comment</h3>
+  <% form_for :comment, :url => comment_path do |f| -%>
+    <%= f.hidden_field :commentable_type, {:value => @photo.class.name} -%>
+    <%= f.hidden_field :commentable_id, {:value => @photo.id} -%>
+    <% unless logged_in? -%>
+        <label for="comment_name">Name</label>
+        <%= f.text_field :name, :class=>"fieldbox wide" %>
+        <br/>
+        <label for="comment_email">Email</label>
+        <%= f.text_field :email, :class=>"fieldbox wide" %>
+        <br/>
+        <label for="comment_url">Website</label>
+        <%= f.text_field :url, :class=>"fieldbox wide" %>
+        <label for="comment_comment">Comment</label>
+    <% end -%>
+
+    <%= f.text_area :comment, {:rows=>6, :cols=>50, :class=>"editor wide fieldbox"} -%>
+    <br/>
+    <%= submit_tag 'Post comment', {:accesskey => "s", :class=>"button mainaction"} %>
+  <% end %>
 
 </div>

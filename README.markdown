@@ -24,6 +24,7 @@ In case you haven't installed any of them previously you'll need the following p
 * [seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo_urls)
 * [acts\_as\_taggable\_on\_steroids](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
 * [acts\_as\_list](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_list)
+* [acts\_as\_rateable](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_rateable)
 
 Follow each link above for a short installation guide incase you have to install them.			
 
@@ -35,7 +36,7 @@ Install
 * Install plugin form source:
 
 <pre>
-ruby script/plugin install git@github.com:tog/tog_pìcto.git
+ruby script/plugin install git://github.com/tog/tog_picto.git
 </pre>
 
 * Generate installation migration:

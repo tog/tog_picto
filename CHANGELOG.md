@@ -1,3 +1,3 @@
 Edge
 ----
-Modified the presentation of the comments
+* Modified the presentation of the comments

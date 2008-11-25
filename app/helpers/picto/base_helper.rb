@@ -6,7 +6,7 @@ module Picto
       if main_photo
         image_tag(url_for_image_column(main_photo, "image", :name =>"tiny"), :style => "float:left;margin-right:10px;")
       else
-         image_tag "picto/default_photoset.png", :style => "float:left;margin-right:10px;"
+         image_tag "/tog_picto/images/default_photoset.png", :style => "float:left;margin-right:10px;"
       end
     end
 

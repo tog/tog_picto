@@ -6,12 +6,10 @@
   <div style="width:75%">
   <% unless @photos.blank? %>
     <% for photo in @photos %>
-      <%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
-                picto_photo_url(photo), 
-                {:title => photo.title} %>
+      <%= link_to image_tag(photo.image.url(:tiny)), picto_photo_url(photo), {:title => photo.title} %>
     <% end %>
   <% else %>
-    No photos with this tag yet. 
+    No photos with this tag yet.
   <% end %>
   </div>
 </div>

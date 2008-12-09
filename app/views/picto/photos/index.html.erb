@@ -2,9 +2,7 @@
 <div style="width:75%">
 <% unless @last_photos.blank? %>
   <% for photo in @last_photos %>
-    <%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
-              picto_photo_url(photo), 
-              {:title => photo.title} %>
+    <%= link_to image_tag(photo.image.url(:tiny)), picto_photo_url(photo), {:title => photo.title} %>
   <% end %>
   <div> All photo tags
     <ul>
@@ -14,7 +12,7 @@
     </ul>
   </div>
 <% else %>
-  No photos. 
+  No photos.
 <% end %>
 </div>
 
@@ -22,11 +20,9 @@
 <div style="width:75%">
 <% unless @your_photos.blank? %>
   <% for photo in @your_photos %>
-    <%= link_to image_tag(url_for_image_column(photo, "image", :name =>"tiny")), 
-              picto_photo_url(photo), 
-              {:title => photo.title} %>
+    <%= link_to image_tag(photo.image.url(:tiny)), picto_photo_url(photo), {:title => photo.title} %>
   <% end %>
-  
+
   <div> Your photo tags
     <ul>
       <% tag_cloud_your_photos %w(l1 l2 l3 l4 l5 l6 l7) do |tag, css_class| %>
@@ -35,7 +31,7 @@
     </ul>
   </div>
 <% else %>
-  No photos. 
+  No photos.
 <% end %>
 </div>
 

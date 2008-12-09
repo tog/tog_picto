@@ -11,7 +11,7 @@
    <fieldset>
       <fieldset id="login-details">
         <legend>Photo info<br/>
-        <%= image_tag(url_for_image_column(@photo, "image", :name =>"small")) %> 
+        <%= image_tag(@photo.image.url(:small)) %> 
         </legend>
         <label>Title <%= f.text_field :title, :size=> nil  %></label>
         <label>Description <%= f.text_area :description, :rows => 3 %></label>

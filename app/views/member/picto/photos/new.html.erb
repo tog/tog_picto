@@ -60,7 +60,7 @@
           <p><label>Title</label> <%= text_field "photo[#{i}]", :title, {:class => "fieldbox", :size => "40"}  %></p>
           <p><label>Tags</label> <%= text_field "photo[#{i}]", :tag_list, {:class => "fieldbox", :size => "40"}  %></p>
           <p><label>Description</label> <%= text_area "photo[#{i}]", :description, :size => '40x3' %></p>
-          <p><label>Photo</label> <%= file_column_field "photo[#{i}]", 'image', {:size => nil} %></p>
+          <p><label>Photo</label> <%= file_field "photo[#{i}]", 'image', {:size => nil} %></p>
         </fieldset>
 	      <%if i < 4 %><div id="link_fs_photo_<%=i%>" <%if i>0%>style="display:none"<%end%>><a href="javascript:new_photo(<%=i%>, <%=i+1%>)" class="add">upload one photo more</a></div><%end%>
       <% end -%>

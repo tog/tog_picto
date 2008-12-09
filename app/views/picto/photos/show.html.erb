@@ -11,7 +11,7 @@
     <%= link_to "original", picto_scaled_photo_path(@photo, :original) %>
     </p>
   <div class="photo_container">
-    <%= image_tag(url_for_image_column(@photo, "image", @size)) %>
+    <%= image_tag(@photo.image.url(@size)) %>
   </div>
   <p><%= @photo.description %></p>
   <p>

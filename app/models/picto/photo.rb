@@ -10,15 +10,15 @@ class Picto::Photo < ActiveRecord::Base
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
   belongs_to :photoset
 
-  file_column :image, :root_path => File.join(RAILS_ROOT, "public/system/photos"), :web_root => 'system/photos/', :magick => {
-    :versions => {
-      :original => {:name => "original"},
-      :big      => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.big"),    :name => "big"},
-      :medium   => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.medium"), :name => "medium"},
-      :small    => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.small"),  :name => "small"},
-      :tiny     => {:size => Tog::Plugins.settings(:tog_picto, "photo.versions.tiny"),   :name => "tiny", :crop => "1:1"}
+  has_attached_file :image, 
+    :url => "/system/:class/:attachment/:id/:style_:basename.:extension",
+    :path => ":rails_root/public/system/:class/:attachment/:id/:style_:basename.:extension",
+    :styles => { 
+      :big    => Tog::Plugins.settings(:tog_picto, "photo.versions.big"),
+      :medium => Tog::Plugins.settings(:tog_picto, "photo.versions.medium"),
+      :small  => Tog::Plugins.settings(:tog_picto, "photo.versions.small"),
+      :tiny   => Tog::Plugins.settings(:tog_picto, "photo.versions.tiny")
     }
-  }
 
   private
 

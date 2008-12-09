@@ -90,7 +90,7 @@
            <ul>
            <% unless available_photos.blank? %>
              <% for photo in available_photos %>
-               <%= image_tag url_for_image_column(photo, "image", :name =>"tiny"),
+               <%= image_tag photo.image.url(:tiny),
                             :id => "photo_#{photo.id}",
                             :alt => photo.title,
                             :style=>  "cursor:move",

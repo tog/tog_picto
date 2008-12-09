@@ -24,18 +24,18 @@ class Member::Picto::PhotosController < Member::BaseController
     end
 
     @photos.each do |p|
-      unless p.image.nil?
+      if p.image.dirty?
         unless @photoset.nil?
           p.photoset = @photoset
           @photoset.main_photo = p if @photoset.main_photo.blank?
         end
         p.tag_list = %(#{p.tag_list.to_s},#{@common_tags})
-        p.title = p.image_relative_path.sub(p.image_relative_dir, '')[1..-1] if p.title.blank?
+        p.title = p.image.original_filename if p.title.blank?
         p.save!
       end
     end
 
-    flash[:notice] = "Photos uploaded successfully"
+    flash[:ok] = "Photos uploaded successfully"
 
     unless @photoset.nil?
       @photoset.save!
@@ -78,11 +78,3 @@ class Member::Picto::PhotosController < Member::BaseController
   end
 
 end
-
-#(16..70).each{|i|
-#  p = current_user.photos.new
-#  p.title = "Photo #{i}"
-#  p.description = " Description of Photo #{i}"
-#  p.image = File.new("/Users/aitor/Desktop/glamour/#{i}.jpg")
-#  p.save!
-#}

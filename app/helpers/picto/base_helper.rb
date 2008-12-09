@@ -4,7 +4,7 @@ module Picto
     def photoset_image(photoset)
       main_photo = photoset.main_photo
       if main_photo
-        image_tag(url_for_image_column(main_photo, "image", :name =>"tiny"), :style => "float:left;margin-right:10px;")
+        image_tag(main_photo.image.url("tiny"), :style => "float:left;margin-right:10px;")
       else
          image_tag "/tog_picto/images/default_photoset.png", :style => "float:left;margin-right:10px;"
       end
@@ -34,8 +34,8 @@ module Picto
 
       content_tag :div, html_options do
         <<-eos
-        #{ link_to image_tag(url_for_image_column(photo.higher_item, "image", :tiny)), picto_photo_path(photo.higher_item), :title => default_options[:prev_text], :class => "nav-image-prev" unless photo.higher_item.nil? }
-        #{ link_to image_tag(url_for_image_column(photo.lower_item,  "image", :tiny)), picto_photo_path(photo.lower_item),  :title => default_options[:next_text], :class => "nav-image-next" unless photo.lower_item.nil? }
+        #{ link_to image_tag(photo.higher_item.image.url(:tiny)), picto_photo_path(photo.higher_item), :title => default_options[:prev_text], :class => "nav-image-prev" unless photo.higher_item.nil? }
+        #{ link_to image_tag(photo.lower_item.image.url(:tiny)), picto_photo_path(photo.lower_item),  :title => default_options[:next_text], :class => "nav-image-next" unless photo.lower_item.nil? }
         eos
       end
     end

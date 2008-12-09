@@ -1,7 +1,7 @@
 <ul>
   <% unless photos_in_the_set.blank? %>
     <% for photo in photos_in_the_set %>
-      <%= image_tag url_for_image_column(photo, "image", :name =>"tiny"), :style=>"cursor:move", :class => "photo_in_set",:id => "photo_in_set_#{photo.id}"  %>
+      <%= image_tag photo.image.url(:tiny), :style=>"cursor:move", :class => "photo_in_set",:id => "photo_in_set_#{photo.id}"  %>
       <%= draggable_element "photo_in_set_#{photo.id}", :revert => true %>
     <% end %>
   <% else %>

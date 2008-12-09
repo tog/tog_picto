@@ -11,7 +11,7 @@ class AddAttachmentsImageToPhoto < ActiveRecord::Migration
 
     Picto::Photo.all.each do |p|
       unless p.old_file_name.blank?
-        p.image = File.new("public/system/photos/picto/photo/image/#{p.id}/#{p.old_file_name}")
+        p.image = File.new("public/system/photos/picto/photo/image/#{p.id}/#{p.old_file_name}") if File.exists?("public/system/photos/picto/photo/image/#{p.id}/#{p.old_file_name}")
         p.save!
       end
     end
@@ -27,7 +27,7 @@ class AddAttachmentsImageToPhoto < ActiveRecord::Migration
 
     Picto::Photo.all.each do |p|
       unless p.image_file_name.blank?
-        p.image = File.new("public/system/picto/photos/images/#{p.id}/#{p.image_file_name}")
+        p.image = File.new("public/system/picto/photos/images/#{p.id}/#{p.image_file_name}") if File.exists?("public/system/picto/photos/images/#{p.id}/#{p.image_file_name}")
         p.save!
       end
     end

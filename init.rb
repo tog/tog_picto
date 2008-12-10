@@ -4,9 +4,9 @@ require_plugin 'acts_as_rateable'
 require_plugin 'acts_as_list'
 
 
-Tog::Plugins.settings :tog_picto, "photo.versions.big"    => ">700x700",
-                                  "photo.versions.medium" => ">500x500",
-                                  "photo.versions.small"  => ">250x250",
+Tog::Plugins.settings :tog_picto, "photo.versions.big"    => "700x700>",
+                                  "photo.versions.medium" => "500x500>",
+                                  "photo.versions.small"  => "250x250>",
                                   "photo.versions.tiny"   => "75x75#"
 
 Tog::Interface.sections(:member).add "Photos", "/member/picto/photos"

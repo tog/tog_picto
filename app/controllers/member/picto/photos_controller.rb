@@ -24,7 +24,7 @@ class Member::Picto::PhotosController < Member::BaseController
     end
 
     @photos.each do |p|
-      if p.image.dirty?
+      if p.image?
         unless @photoset.nil?
           p.photoset = @photoset
           @photoset.main_photo = p if @photoset.main_photo.blank?

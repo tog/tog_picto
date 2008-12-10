@@ -41,7 +41,7 @@ class AddAttachmentsImageToPhoto < ActiveRecord::Migration
 
   private
   def self.add_crop(key)
-    Tog::Config[key]="#{Tog::Config[key]}#" unless Tog::Config[key] =~ /%|@|!|<|>|\^/
+    Tog::Config[key]="#{Tog::Config[key]}#" unless Tog::Config[key] =~ /#|%|@|!|<|>|\^/
   end
 
   def self.remove_crop(key)

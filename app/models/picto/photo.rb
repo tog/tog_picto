@@ -5,20 +5,19 @@ class Picto::Photo < ActiveRecord::Base
   acts_as_taggable
   acts_as_rateable :average => true
   acts_as_list :scope => :photoset
-  
+
 
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
   belongs_to :photoset
 
-  has_attached_file :image, 
+  has_attached_file :image,
     :url => "/system/:class/:attachment/:id/:style_:basename.:extension",
-    :path => ":rails_root/public/system/:class/:attachment/:id/:style_:basename.:extension",
-    :styles => { 
+    :styles => {
       :big    => Tog::Plugins.settings(:tog_picto, "photo.versions.big"),
       :medium => Tog::Plugins.settings(:tog_picto, "photo.versions.medium"),
       :small  => Tog::Plugins.settings(:tog_picto, "photo.versions.small"),
       :tiny   => Tog::Plugins.settings(:tog_picto, "photo.versions.tiny")
-    }
+    }}.merge(Tog::Plugins.storage_options)
 
   private
 

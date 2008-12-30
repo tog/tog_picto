@@ -6,9 +6,9 @@ class Picto::Photo < ActiveRecord::Base
   acts_as_rateable :average => true
   acts_as_list :scope => :photoset
   
-
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
   belongs_to :photoset
+  named_scope :public, :joins => "INNER JOIN photosets ON photosets.id = photos.photoset_id",:conditions => ['photosets.privacy = 0']
 
   file_column :image, :root_path => File.join(RAILS_ROOT, "public/system/photos"), :web_root => 'system/photos/', :magick => {
     :versions => {

@@ -12,6 +12,10 @@ Tog::Plugins.settings :tog_picto, "photo.versions.big"    => ">700x700",
 Tog::Interface.sections(:member).add "Photos", "/member/picto/photos"          
 Tog::Interface.sections(:site).add "Photos", "/picto/photosets"          
 
+require "i18n" unless defined?(I18n)
+Dir[File.dirname(__FILE__) + '/locale/**/*.yml'].each do |file|
+  I18n.load_path << file
+end
 
 #Tog::Search.sources << Photo
 #Tog::Search.sources << PhotoSet                        

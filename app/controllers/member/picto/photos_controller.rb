@@ -35,7 +35,7 @@ class Member::Picto::PhotosController < Member::BaseController
       end
     end
 
-    flash[:ok] = "Photos uploaded successfully"
+    flash[:ok] = I18n.t("tog_picto.member.photos_uploaded")
 
     unless @photoset.nil?
       @photoset.save!
@@ -54,12 +54,12 @@ class Member::Picto::PhotosController < Member::BaseController
     respond_to do |wants|
       if @photo.update_attributes(params[:photo])
         wants.html do
-          flash[:ok]='Photo updated.'
+          flash[:ok]=I18n.t("tog_picto.member.photo_updated")
           redirect_to member_picto_photos_path
         end
       else
         wants.html do
-          flash.now[:error]='Failed to update photo.'
+          flash.now[:error]=I18n.t("tog_picto.member.photo_update_error")
           render :action => :edit
         end
       end
@@ -71,7 +71,7 @@ class Member::Picto::PhotosController < Member::BaseController
     @photo.destroy
     respond_to do |wants|
       wants.html do
-        flash[:ok]='Photo deleted.'
+        flash[:ok]=I18n.t("tog_picto.member.photo_deleted")
         redirect_to member_picto_photos_path
       end
     end

@@ -41,7 +41,7 @@ module Picto
     end
 
     def tag_cloud_photos(classes)
-      tags = Picto::Photo.tag_counts
+      tags = Picto::Photo.public.tag_counts
       return if tags.empty?
       max_count = tags.sort_by(&:count).last.count.to_f
       tags.each do |tag|

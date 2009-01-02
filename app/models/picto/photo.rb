@@ -10,7 +10,7 @@ class Picto::Photo < ActiveRecord::Base
   belongs_to :photoset
   named_scope :public, :joins => "INNER JOIN photosets ON photosets.id = photos.photoset_id",:conditions => ['photosets.privacy = 0']
 
-  has_attached_file :image,
+  has_attached_file :image, {
     :url => "/system/:class/:attachment/:id/:style_:basename.:extension",
     :styles => {
       :big    => Tog::Plugins.settings(:tog_picto, "photo.versions.big"),

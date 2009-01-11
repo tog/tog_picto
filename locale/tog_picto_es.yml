@@ -1,0 +1,14 @@
+# {{xxx}}
+es:
+  tog_picto:
+    plugin_name: Picto
+    plugin_description: Plugin para gestión de fotos
+    member:
+      photoset_created: Álbum creado con éxito
+      photoset_updated: Álbum actualizado con éxito
+      photoset_update_error: Error al actualizar el álbum
+      photoset_deleted: Álbum eliminado
+      photos_uploaded: Se han subido las fotos con éxito
+      photo_updated: Foto actualizada.
+      photo_updated_error: Error al actualizar la foto
+      photo_deleted: Foto eliminada

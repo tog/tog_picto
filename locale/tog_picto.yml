@@ -1,0 +1,16 @@
+# {{xxx}}
+en:
+  tog_picto:
+    plugin_name: Picto
+    plugin_description: Plugin for photo management
+    member:
+      photoset_created: Photoset created successfully
+      photoset_updated: Photoset updated successfully
+      photoset_update_error: Failed to update photoset.
+      photoset_deleted: Photoset deleted
+      photos_uploaded: Photos uploaded successfully
+      photo_updated: Photo updated.
+      photo_updated_error: Failed to update photo.
+      photo_deleted: Photo deleted.
+      
+

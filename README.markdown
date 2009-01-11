@@ -50,7 +50,7 @@ ruby script/generate migration install_picto
 <pre>
 class InstallPicto < ActiveRecord::Migration
   def self.up
-    migrate_plugin "tog_picto", 6
+    migrate_plugin "tog_picto", 7
   end
 
   def self.down

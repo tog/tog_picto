@@ -1,10 +1,10 @@
 module Picto
   module BaseHelper
 
-    def photoset_image(photoset)
+    def photoset_image(photoset, size="tiny")
       main_photo = photoset.main_photo
       if main_photo
-        image_tag(main_photo.image.url("tiny"), :style => "float:left;margin-right:10px;")
+        image_tag(main_photo.image.url(size), :style => "float:left;margin-right:10px;")
       else
          image_tag "/tog_picto/images/default_photoset.png", :style => "float:left;margin-right:10px;"
       end

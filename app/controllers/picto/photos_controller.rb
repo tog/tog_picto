@@ -14,12 +14,19 @@ class Picto::PhotosController < ApplicationController
   end
 
   def tags
+    @order = params[:order] || 'created_at'
+    @page = params[:page] || '1'
+    @asc = params[:asc] || 'desc'    
     @tag = params[:tag]
     if params[:user].blank?
-      @photos = Picto::Photo.find_tagged_with @tag
+      @photos = Picto::Photo.find_tagged_with(@tag).paginate :page => @page,
+                                    :per_page => Tog::Config["plugins.tog_social.profile.list.page.size"],
+                                    :order => @order + " " + @asc
     else
       @user = User.find params[:user]
-      @photos = @user.photos.find_tagged_with @tag
+      @photos = @user.photos.find_tagged_with(@tag).paginate :page => @page,
+                                    :per_page => Tog::Config["plugins.tog_social.profile.list.page.size"],
+                                    :order => @order + " " + @asc
     end
     filter(@photos)
   end

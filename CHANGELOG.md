@@ -1,6 +1,9 @@
 Edge
 ----
 
+0.4.2
+----
+
 0.4.0
 ----
 * Ticket #102. Consolidate comments listing and form

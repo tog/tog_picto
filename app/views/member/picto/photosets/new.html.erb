@@ -21,7 +21,7 @@
 
        <p><label>Tags (separated by ,)</label> <%= f.text_field :tag_list, {:class => "fieldbox", :size => "40"} %></p>
 
-       <p><label>Privacy</label><input checked="checked" type="checkbox" value="1" /><input name="user[admin]" type="hidden" value="0" /> This photoset is public</p>
+       <p><label>Privacy</label><%= f.check_box :privacy%> This photoset is private</p>
 
     </div>
   </fieldset>

@@ -21,7 +21,7 @@ class AddAttachmentsImageToPhoto < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :photos, :image
+    add_column :photos, :image, :string
 
     remove_crop("plugins.tog_picto.photo.versions.tiny")
 

@@ -1,5 +1,10 @@
 # {{xxx}}
 en:
+  interface:
+      member:
+          photos: Photos
+      site:
+          photos: Photos
   tog_picto:
     plugin_name: Picto
     plugin_description: Plugin for photo management

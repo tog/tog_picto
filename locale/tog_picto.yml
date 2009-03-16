@@ -22,7 +22,7 @@ en:
       new_photoset: New photoset
       title: Title
       description: Description
-      tags_separated_by: Tags separated by
+      tags_separated_by: Tags (separated by ,)
       privacy: Private
       photoset_is_private: This photoset is private
       create_photoset: Create photoset

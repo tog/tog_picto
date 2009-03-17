@@ -17,15 +17,35 @@ es:
       photo_updated: Foto actualizada.
       photo_updated_error: Error al actualizar la foto
       photo_deleted: Foto eliminada
-  photosets:
-    new:
-      new_photoset: Nuevo álbum
-      title: Título
-      description: Descripción
-      tags_separated_by: Etiquetas (separadas por ,)
-      privacy: Privado
-      photoset_is_private: Este álbum es privado
-      create_photoset: Crear álbum
-      upload_more_photos: Sube más fotos ahora!
-      upload_new_images: Subir nuevas imágenes
-      your_photosets: Tus álbumes
+      sidebar:
+        upload_more_photos: Upload more photos now!
+        upload_new_images: Upload new images
+        your_photosets: Your photosets
+      photosets:
+        new:
+          new_photoset: Nuevo álbum
+          title: Título
+          description: Descripción
+          tags_separated_by: Etiquetas (separadas por ,)
+          privacy: Privado
+          photoset_is_private: Este álbum es privado
+          create_photoset: Crear álbum
+          upload_more_photos: Sube más fotos ahora!
+          upload_new_images: Subir nuevas imágenes
+          your_photosets: Tus álbumes
+      photos:
+        new:
+          upload_photos: Upload photos
+          common_to_all_photos: Common to all photos
+          tags: Tags
+          select_photoset: Select photoset
+          create_new: Create new
+          photoset_title: Title
+          photoset_description: Description
+          photo_with_index: Photo
+          title: Title
+          tags: Tags
+          description: Description
+          photo_file_field: Photo
+          upload_one_more: Upload one more photo
+          upload: Upload!

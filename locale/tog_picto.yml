@@ -17,16 +17,15 @@ en:
       photo_updated: Photo updated.
       photo_updated_error: Failed to update photo.
       photo_deleted: Photo deleted.
-  photosets:
-    new:
-      new_photoset: New photoset
-      title: Title
-      description: Description
-      tags_separated_by: Tags (separated by ,)
-      privacy: Private
-      photoset_is_private: This photoset is private
-      create_photoset: Create photoset
-      upload_more_photos: Upload more photos now!
-      upload_new_images: Upload new images
-      your_photosets: Your photosets
-
+      photosets:
+        new:
+          new_photoset: New photosetxxx
+          title: Title
+          description: Description
+          tags_separated_by: Tags (separated by ,)
+          privacy: Private
+          photoset_is_private: This photoset is private
+          create_photoset: Create photoset
+          upload_more_photos: Upload more photos now!
+          upload_new_images: Upload new images
+          your_photosets: Your photosets

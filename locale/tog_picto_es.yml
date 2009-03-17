@@ -17,3 +17,15 @@ es:
       photo_updated: Foto actualizada.
       photo_updated_error: Error al actualizar la foto
       photo_deleted: Foto eliminada
+  photosets:
+    new:
+      new_photoset: Nuevo álbum
+      title: Título
+      description: Descripción
+      tags_separated_by: Etiquetas (separadas por ,)
+      privacy: Privado
+      photoset_is_private: Este álbum es privado
+      create_photoset: Crear álbum
+      upload_more_photos: Sube más fotos ahora!
+      upload_new_images: Subir nuevas imágenes
+      your_photosets: Tus álbumes

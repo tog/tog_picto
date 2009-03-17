@@ -1,9 +1,8 @@
 <% content_for :sidebar do %>
-  <%= link_to I18n.t("tog_picto.member.photos.new.upload_more_photos"),  new_member_picto_photo_url, {:class => "add", :title => I18n.t("tog_picto.member.photos.new.upload_new_images") } %>
-  <br/>
-  <%= link_to I18n.t("tog_picto.member.photos.new.your_photosets"), member_picto_photosets_url %>
+  <%= link_to I18n.t("tog_picto.member.sidebar.upload_more_photos"),  new_member_picto_photo_url, { :class => "add", :title => I18n.t("tog_picto.member.sidebar.upload_new_images") } %>
+<br/>
+  <%= link_to I18n.t("tog_picto.member.sidebar.your_photosets"), member_picto_photosets_url %>
 <% end %>
-
 
 <div class="titleB"><%= I18n.t("tog_picto.member.photos.new.upload_photos") %></div>
 

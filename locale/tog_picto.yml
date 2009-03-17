@@ -17,6 +17,10 @@ en:
       photo_updated: Photo updated.
       photo_updated_error: Failed to update photo.
       photo_deleted: Photo deleted.
+      sidebar:
+        upload_more_photos: Upload more photos now!
+        upload_new_images: Upload new images
+        your_photosets: Your photosets
       photosets:
         new:
           new_photoset: New photoset
@@ -26,9 +30,6 @@ en:
           privacy: Private
           photoset_is_private: This photoset is private
           create_photoset: Create photoset
-          upload_more_photos: Upload more photos now!
-          upload_new_images: Upload new images
-          your_photosets: Your photosets
       photos:
         new:
           upload_photos: Upload photos
@@ -45,7 +46,4 @@ en:
           photo_file_field: Photo
           upload_one_more: Upload one more photo
           upload: Upload!
-          upload_more_photos: Upload more photos now!
-          upload_new_images: Upload new images
-          your_photosets: Your photosets
 

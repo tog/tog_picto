@@ -30,7 +30,7 @@
 
         <p><label><%= I18n.t("tog_picto.member.photos.new.tags") %></label> <%= text_field :common, :tag_list, {:class => "fieldbox", :size => "40"}  %></p>
 
-        <p><label><%= I18n.t("tog_picto.member.photos.new.select_photoset") %></label> <%= select(:common, :photoset, @owned_photosets.collect {|p| [ p.title, p.id ] } << [%( #{I18n.t("tog_picto.member.photos.new.create_new")}...), 0], { :include_blank => true}, :onchange => "toggle_photoset(this)") %></p>
+        <p><label><%= I18n.t("tog_picto.member.photos.new.select_photoset") %></label> <%= select(:common, :photoset, @owned_photosets.collect {|p| [ p.title, p.id ] } << [%(#{I18n.t("tog_picto.member.photos.new.create_new")}...), 0], { :include_blank => true}, :onchange => "toggle_photoset(this)") %></p>
 
         
           <div id="new-set" style="display:none">

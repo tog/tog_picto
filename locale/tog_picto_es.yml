@@ -8,6 +8,8 @@ es:
   tog_picto:
     plugin_name: Picto
     plugin_description: Plugin para gestión de fotos
+    photoset_photos:
+      no_photos_yet: No photos yet
     member:
       photoset_created: Álbum creado con éxito
       photoset_updated: Álbum actualizado con éxito
@@ -33,6 +35,20 @@ es:
           upload_more_photos: Sube más fotos ahora!
           upload_new_images: Subir nuevas imágenes
           your_photosets: Tus álbumes
+        edit:
+          editing_photoset: Editing photoset
+          title: Title
+          description: Description
+          tags_separated_by: Tags (separated by ,)
+          privacy: Privacy
+          this_photoset_is_public: This photoset is public
+          photos: Photos
+          main_photo: Main photo
+          currently_in_the_set: Currently in the set
+          drag_here_to_extract: Drag here to extract a photo of a photoset
+          available_photos: Available photos in your photostream
+          no_more_photos: No more photos
+          save_photoset: Save photoset
       photos:
         new:
           upload_photos: Upload photos

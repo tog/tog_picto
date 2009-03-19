@@ -5,6 +5,6 @@
       <%= draggable_element "photo_in_set_#{photo.id}", :revert => true %>
     <% end %>
   <% else %>
-    No photos yet.
+    <%= I18n.t("tog_picto.photoset_photos.no_photos_yet") %>.
   <% end %>
 </ul>

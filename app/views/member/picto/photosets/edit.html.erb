@@ -10,7 +10,7 @@
 <% end %>
 
 
-<div class="titleB">Editing photoset</div>
+<div class="titleB"><%= I18n.t("tog_picto.member.photosets.edit.editing_photoset") %></div>
 
 <br />
 
@@ -20,13 +20,13 @@
 
   <fieldset>
     <div class="fields">
-       <p><label>Title</label> <%= f.text_field :title, {:class => "fieldbox", :size => "40"} %></p>
+       <p><label><%= I18n.t("tog_picto.member.photosets.edit.title") %></label> <%= f.text_field :title, {:class => "fieldbox", :size => "40"} %></p>
 
-       <p><label>Description</label> <%= f.text_area :description, :size => '40x4' %></p>
+       <p><label><%= I18n.t("tog_picto.member.photosets.edit.description") %></label> <%= f.text_area :description, :size => '40x4' %></p>
 
-       <p><label>Tags (separated by ,)</label> <%= f.text_field :tag_list, {:class => "fieldbox", :size => "40"} %></p>
+       <p><label><%= I18n.t("tog_picto.member.photosets.edit.tags_separated_by") %></label> <%= f.text_field :tag_list, {:class => "fieldbox", :size => "40"} %></p>
 
-       <p><label>Privacy</label><input checked="checked" type="checkbox" value="<%=@photoset.privacy%>" /><input name="user[admin]" type="hidden" value="0" /> This photoset is public</p>
+       <p><label><%= I18n.t("tog_picto.member.photosets.edit.privacy") %></label><input checked="checked" type="checkbox" value="<%=@photoset.privacy%>" /><input name="user[admin]" type="hidden" value="0" /><%= I18n.t("tog_picto.member.photosets.edit.this_photoset_is_public") %></p>
     </div>
   </fieldset>
   
@@ -44,9 +44,9 @@
   </style>
   
   <fieldset id="social-details">
-    <legend>Photos</legend>
+    <legend><%= I18n.t("tog_picto.member.photosets.edit.photos") %></legend>
     <div class="group">
-      <label>Main photo
+      <label><%= I18n.t("tog_picto.member.photosets.edit.main_photo") %>
       <div id="photoset_main_photo" class="main_photo_in_the_set">
         <div id="main_photo">
           <%= render :partial => 'main_photo_in_the_set', :locals => {:photoset => @photoset } %>
@@ -61,7 +61,7 @@
     </div>
     <div class="group">
       <% photos_in_the_set = @photoset.photos %>
-      <label>Currently in the set
+      <label><%= I18n.t("tog_picto.member.photosets.edit.currently_in_the_set") %>
       <div id="photoset_<%= @photoset.id %>" class="photos_in_the_set">
         <div id="items">
           <%= render :partial => 'photoset_photos', :locals => {:photos_in_the_set => photos_in_the_set} %>
@@ -75,7 +75,7 @@
             <br/>
       <div id="photos_bin" class="photos_bin">
         <div id="items">
-          <h4>Drag here to extract a photo of a photoset</h4>
+          <h4><%= I18n.t("tog_picto.member.photosets.edit.drag_here_to_extract") %></h4>
         </div>
         <div style="clear:both;"></div>
       </div>
@@ -85,7 +85,7 @@
             :hoverclass => 'photos_bin_hover' %>
       </label>      
       <% available_photos = current_user.photos - photos_in_the_set %>
-      <label>Available Photos in your photostream
+      <label><%= I18n.t("tog_picto.member.photosets.edit.available_photos") %>
          <div id="available_photos">
            <ul>
            <% unless available_photos.blank? %>
@@ -98,7 +98,7 @@
                <%= draggable_element "photo_#{photo.id}", :revert => true %>
              <% end %>
            <% else %>
-             No more photos.
+             <%= I18n.t("tog_picto.member.photosets.edit.no_more_photos") %>.
            <% end %>
            </ul>
          </div>
@@ -109,6 +109,6 @@
   
   <br />
   <div class="actions">
-    <%= submit_tag 'Save photoset', :class => "button mainaction" %>
+    <%= submit_tag I18n.t("tog_picto.member.photosets.edit.save_photoset"), :class => "button mainaction" %>
   </div>
 <% end -%>

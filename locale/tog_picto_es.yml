@@ -9,7 +9,7 @@ es:
     plugin_name: Picto
     plugin_description: Plugin para gestión de fotos
     photoset_photos:
-      no_photos_yet: No photos yet
+      no_photos_yet: Aún no hay fotos
     member:
       photoset_created: Álbum creado con éxito
       photoset_updated: Álbum actualizado con éxito
@@ -20,9 +20,9 @@ es:
       photo_updated_error: Error al actualizar la foto
       photo_deleted: Foto eliminada
       sidebar:
-        upload_more_photos: Upload more photos now!
-        upload_new_images: Upload new images
-        your_photosets: Your photosets
+        upload_more_photos: Sube más fotos ahora!
+        upload_new_images: Subir nuevas fotos
+        your_photosets: Tus álbumes
       photosets:
         new:
           new_photoset: Nuevo álbum
@@ -36,32 +36,32 @@ es:
           upload_new_images: Subir nuevas imágenes
           your_photosets: Tus álbumes
         edit:
-          editing_photoset: Editing photoset
-          title: Title
-          description: Description
-          tags_separated_by: Tags (separated by ,)
-          privacy: Privacy
-          this_photoset_is_public: This photoset is public
-          photos: Photos
-          main_photo: Main photo
-          currently_in_the_set: Currently in the set
-          drag_here_to_extract: Drag here to extract a photo of a photoset
-          available_photos: Available photos in your photostream
-          no_more_photos: No more photos
-          save_photoset: Save photoset
+          editing_photoset: Editando álbum
+          title: Título
+          description: Descripción
+          tags_separated_by: Etiquetas (separadas por ,)
+          privacy: Privacidad
+          this_photoset_is_public: Esta álbum es público
+          photos: Fotos
+          main_photo: Portada
+          currently_in_the_set: Actualmente en el álbum
+          drag_here_to_extract: Arrastre aquí para eliminar una foto del álbum
+          available_photos: Fotos en tu cuenta
+          no_more_photos: No hay mas fotos
+          save_photoset: Guardar álbum
       photos:
         new:
-          upload_photos: Upload photos
-          common_to_all_photos: Common to all photos
-          tags: Tags
-          select_photoset: Select photoset
-          create_new: Create new
-          photoset_title: Title
-          photoset_description: Description
-          photo_with_index: Photo
-          title: Title
-          tags: Tags
-          description: Description
-          photo_file_field: Photo
-          upload_one_more: Upload one more photo
-          upload: Upload!
+          upload_photos: Subir fotos
+          common_to_all_photos: Común a todas las fotos
+          tags: Etiquetas
+          select_photoset: Seleccionar álbum
+          create_new: Crear nuevo
+          photoset_title: Título
+          photoset_description: Descripción
+          photo_with_index: Foto
+          title: Título
+          tags: Etiquetas
+          description: Descripción
+          photo_file_field: Foto
+          upload_one_more: Subir una foto más
+          upload: Subir!

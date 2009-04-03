@@ -52,4 +52,8 @@ class Picto::Photoset < ActiveRecord::Base
     authorized_read(user) && authorized_write(user) && authorized_destroy(user)
   end
 
+  def number_of_photos
+    photos.length
+  end
+
 end

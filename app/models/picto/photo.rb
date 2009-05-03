@@ -19,6 +19,10 @@ class Picto::Photo < ActiveRecord::Base
       :tiny   => Tog::Plugins.settings(:tog_picto, "photo.versions.tiny")
     }}.merge(Tog::Plugins.storage_options)
 
+  def creation_date(format=:short)
+    I18n.l(self.created_at, :format => format)
+  end
+  
   private
 
   def update_position

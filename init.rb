@@ -6,7 +6,8 @@ require_plugin 'acts_as_list'
 Tog::Plugins.settings :tog_picto, "photo.versions.big"    => "700x700>",
                                   "photo.versions.medium" => "500x500>",
                                   "photo.versions.small"  => "250x250>",
-                                  "photo.versions.tiny"   => "75x75#"
+                                  "photo.versions.tiny"   => "75x75#",
+                                  "photo.total_file_size_limit" => 10*(2**20) # 10 MB
 
 Tog::Interface.sections(:member).add "Photos", "/member/picto/photos"
 Tog::Interface.sections(:site).add "Photos", "/picto/photosets"

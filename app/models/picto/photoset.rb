@@ -51,6 +51,10 @@ class Picto::Photoset < ActiveRecord::Base
   def authorized_all(user)
     authorized_read(user) && authorized_write(user) && authorized_destroy(user)
   end
+  
+  def creation_date(format=:short)
+    I18n.l(self.created_at, :format => format)
+  end  
 
   def number_of_photos
     photos.length

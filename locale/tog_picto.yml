@@ -10,6 +10,8 @@ en:
     plugin_description: Plugin for photo management
     photoset_photos:
       no_photos_yet: No photos yet
+    site:
+      no_photosets_yet: No photosets yet
     member:
       photoset_created: Photoset created successfully
       photoset_updated: Photoset updated successfully

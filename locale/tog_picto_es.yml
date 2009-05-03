@@ -10,6 +10,8 @@ es:
     plugin_description: Plugin para gestión de fotos
     photoset_photos:
       no_photos_yet: Aún no hay fotos
+    site:
+      no_photosets_yet: Aún no hay álbumes
     member:
       photoset_created: Álbum creado con éxito
       photoset_updated: Álbum actualizado con éxito

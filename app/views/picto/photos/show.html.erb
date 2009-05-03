@@ -4,22 +4,26 @@
 <div class="titleB"><%= @photo.title %></div>
 
 <div class="photo">
-  <p><%= link_to I18n.t("mysite.tiny"), picto_scaled_photo_path(@photo, :tiny)%> |
-    <%= link_to I18n.t("mysite.small"), picto_scaled_photo_path(@photo, :small) %> |
-    <%= link_to I18n.t("mysite.medium"), picto_scaled_photo_path(@photo, :medium) %> |
-    <%= link_to I18n.t("mysite.big"), picto_scaled_photo_path(@photo, :big) %> |
-    <%= link_to I18n.t("mysite.original"), picto_scaled_photo_path(@photo, :original) %>
+  <p><%= link_to 'tiny', picto_scaled_photo_path(@photo, :tiny)%> |
+    <%= link_to "small", picto_scaled_photo_path(@photo, :small) %> |
+    <%= link_to "medium", picto_scaled_photo_path(@photo, :medium) %> |
+    <%= link_to "big", picto_scaled_photo_path(@photo, :big) %> |
+    <%= link_to "original", picto_scaled_photo_path(@photo, :original) %>
     </p>
   <div class="photo_container">
     <%= image_tag(@photo.image.url(@size)) %>
   </div>
   <p><%= @photo.description %></p>
   <p>
-    <% tags = @photo.tag_list %><%= I18n.t("mysite.tags") %><% if !tags.blank? %>
+    <% tags = @photo.tag_list %>
+    Tags:
+    <% if !tags.blank? %>
       <% for tag in tags %>
         <%= link_to tag, tags_picto_photos_path(:tag => tag, :user => @photo.user_id) %>
       <% end %>
-    <% else %><%= I18n.t("mysite.no_tags") %><% end %>
+    <% else %>
+      No tags.
+    <% end %>
   </p>
 
   <div class="info_results">

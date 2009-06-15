@@ -14,62 +14,10 @@ Included functionality
 Resources
 =========
 
-Plugin requirements
--------------------
-
-
-In case you haven't installed any of them previously you'll need the following plugins:
-
-* [acts\_as\_commentable](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_commentable)
-* [seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo_urls)
-* [acts\_as\_taggable\_on\_steroids](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
-* [acts\_as\_list](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_list)
-* [acts\_as\_rateable](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_rateable)
-
-Follow each link above for a short installation guide incase you have to install them.			
-
-	
-
 Install
 -------
 
-* Install plugin form source:
-
-<pre>
-ruby script/plugin install git://github.com/tog/tog_picto.git
-</pre>
-
-* Generate installation migration:
-
-<pre>
-ruby script/generate migration install_picto
-</pre>
-
-	  with the following content:
-
-<pre>
-class InstallPicto < ActiveRecord::Migration
-  def self.up
-    migrate_plugin "tog_picto", 7
-  end
-
-  def self.down
-    migrate_plugin "tog_picto", 0
-  end
-end
-</pre>
-
-* Add picto's routes to your application's config/routes.rb
-
-<pre>
-map.routes_from_plugin 'tog_picto'
-</pre> 
-
-* And finally...
-
-<pre> 
-rake db:migrate
-</pre> 
+rake rails:template LOCATION=http://tr.im/tog_picto_0_5_1
 
 More
 -------

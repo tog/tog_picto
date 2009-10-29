@@ -1,0 +1,66 @@
+pt-BR:
+  interface:
+      member:
+          photos: Fotos
+      site:
+          photos: Fotos
+  tog_picto:
+    plugin_name: Picto
+    plugin_description: Plugin para gerenciamento de fotos
+    photoset_photos:
+      no_photos_yet: Nenhuma foto ainda
+    site:
+      no_photosets_yet: Nenhum álbum ainda
+    member:
+      photoset_created: Álbum criado com sucesso
+      photoset_updated: Álbum atualizado com sucesso
+      photoset_update_error: Erro ao criar álbum
+      photoset_deleted: Álbum apagado
+      photos_uploaded: Fotos atualizadas com sucesso
+      photo_updated: Foto atualizada
+      photo_updated_error: Erro ao atualizar foto
+      photo_deleted: Foto apagada
+      sidebar:
+        upload_more_photos: Envie mais fotos agora!
+        upload_new_images: Envie novas imagens
+        your_photosets: Seus álbuns
+      photosets:
+        new:
+          new_photoset: Novo álbum
+          title: Título
+          description: Descrição
+          tags_separated_by: Tags (separadas por vírgulas)
+          privacy: Privado
+          photoset_is_private: Esse álbum é privado
+          create_photoset: Criar álbum
+        edit:
+          editing_photoset: Editar álbum
+          title: Título
+          description: Descrição
+          tags_separated_by: Tags (separadas por vírgulas)
+          privacy: Privacidade
+          this_photoset_is_public: Esse álbum é público
+          photos: Fotos
+          main_photo: Foto principal
+          currently_in_the_set: Atualmente no álbum
+          drag_here_to_extract: Arraste uma foto pra cá para retirar do álbum
+          available_photos: Fotos disponíveis
+          no_more_photos: Sem mais fotos
+          save_photoset: Salvar álbum
+      photos:
+        new:
+          upload_photos: Enviar fotos
+          common_to_all_photos: Para todas as fotos
+          tags: Tags
+          select_photoset: Selecionar álbum
+          create_new: Criar novo
+          photoset_title: Título
+          photoset_description: Descrição
+          photo_with_index: Foto
+          title: Título
+          tags: Tags
+          description: Descrição
+          photo_file_field: Foto
+          upload_one_more: Enviar mais uma foto
+          upload: Enviar!
+

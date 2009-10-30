@@ -1,6 +1,8 @@
 Edge
 ----
 
+* Template uses new mgration generator
+
 0.5.4
 ----
 

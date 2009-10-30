@@ -13,3 +13,5 @@ end
 
 require 'factory_girl'
 require File.expand_path(File.dirname(__FILE__) + '/factories')
+
+begin require 'redgreen'; rescue LoadError; end

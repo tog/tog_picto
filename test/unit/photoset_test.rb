@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class Picto::PhotosetTest < Test::Unit::TestCase
+class Picto::PhotosetTest < ActiveSupport::TestCase
   context "A Photoset" do
     setup do
       @photoset = Factory(:photoset)
